@@ -6,11 +6,20 @@ body,
   left: 0;
   width: 100%;
   height: 100%;
-  background: #262626;
 }
 
 canvas {
   touch-action: none;
+}
+
+.mode-btn {
+  cursor: pointer;
+  position: fixed;
+  border: none;
+  background: none;
+  top: 15px;
+  right: 15px;
+  font-size: 30px;
 }
 
 .menu-container {
@@ -22,6 +31,7 @@ canvas {
   width: 100%;
 }
 
+/* main menu*/
 .menu ul {
   list-style: none;
   display: inline-flex;
@@ -32,20 +42,111 @@ canvas {
 
 .menu ul li {
   cursor: pointer;
+  transition: all 0.4s;
+}
+
+.menu ul li:hover {
+  transform: translateY(-5px);
+}
+
+.menu ul li::after {
+  content: "";
+  width: 0px;
+  height: 3px;
+  transition: all 0.3s;
+  transform: translateY(10px);
 }
 
 .menu ul li svg {
   display: flex;
   width: 45px;
   height: 38px;
-  /* transform: scale(0.1); */
 }
 
 .menu ul li svg path {
   transform: scale(0.04);
   fill: #f2f2f2;
 }
+.menu.day ul li svg path {
+  transform: scale(0.04);
+  fill: #262626;
+}
+
+/*active class on menu*/
+.menu ul li.active {
+  transform: translateY(-5px);
+}
+
+.menu ul li.active::after {
+  width: 42px;
+  background: #588b8b;
+  display: block;
+  border-radius: 10px;
+}
 
 .menu ul li.active svg path {
-  fill: red;
+  fill: #588b8b;
+}
+
+/*color menu*/
+.color-menu {
+  position: absolute;
+  border: 2px solid #588b8b;
+  bottom: 80px;
+  background: rgba(247, 241, 241, 0.77);
+  border-radius: 50px;
+  padding: 20px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
+}
+
+.color-menu ul {
+  list-style: none;
+  display: inline-flex;
+  gap: 3em;
+  margin: 0;
+  padding: 0;
+}
+
+.color-menu ul li {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 45px;
+  transition: all 0.3s;
+}
+
+.color-menu ul li:last-of-type:hover {
+  transform: scale(1);
+}
+
+.color-menu ul li:hover {
+  transform: scale(1.1);
+}
+
+.color-menu ul li:last-of-type {
+  font-size: 35px;
+  color: #588b8b;
+}
+
+/*active class on color menu*/
+.color-menu ul li.active:hover {
+  transform: scale(1);
+}
+
+.color-menu ul li.active::after {
+  content: "";
+  width: 70px;
+  height: 70px;
+  border-radius: 50px;
+  position: absolute;
+  border: 1px solid #588b8b;
+}
+
+/*toggle color menu visibility*/
+.show {
+  opacity: 1;
+  visibility: visible;
 }
