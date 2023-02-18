@@ -1,6 +1,7 @@
 import {
   ContactShadows,
   Environment,
+  Float,
   PresentationControls,
 } from "@react-three/drei";
 import { Suspense } from "react";
@@ -9,7 +10,6 @@ import { PokeBall } from "./PokeBall";
 function App() {
   return (
     <Suspense>
-      <color attach="background" args={["#2d4967"]} />
       <Environment preset="city" />
       <ambientLight intensity={0.5} />
       <spotLight
@@ -28,7 +28,9 @@ function App() {
         polar={[-Math.PI / 3, Math.PI / 3]}
         azimuth={[-Math.PI / 2, Math.PI / 3]}
       >
-        <PokeBall rotation={[-0.1, 0, 0.1]} scale={0.8} />
+        <Float speed={3} rotationIntensity={1} floatIntensity={1}>
+          <PokeBall rotation={[-0.1, 0, 0.1]} scale={0.8} />
+        </Float>
       </PresentationControls>
       <ContactShadows
         position={[0, -1.4, 0]}
