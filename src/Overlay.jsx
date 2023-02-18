@@ -50,8 +50,9 @@ const Overlay = () => {
 
   const [bottomColorData] = useState([
     { id: 1, color: "#f0f0f0" },
-    { id: 2, color: "#926F34" },
-    { id: 3, color: "#828282" },
+    { id: 2, color: "#0f0f0f" },
+    { id: 3, color: "#926F34" },
+    { id: 4, color: "#828282" },
   ]);
 
   const [emissionColorData] = useState([
@@ -86,6 +87,10 @@ const Overlay = () => {
 
   return (
     <>
+      <div className="title" style={{ color: dayMode ? "#262626" : "#f2f2f2" }}>
+        <h1>PokeBall</h1>
+        <h2>Customizer</h2>
+      </div>
       <button
         onClick={() => {
           setDayMode(!dayMode);

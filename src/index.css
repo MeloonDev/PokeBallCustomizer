@@ -1,3 +1,9 @@
+@font-face {
+  font-family: "PokemonSolid";
+  src: local("Pokemon Solid"),
+    url("./fonts/PokemonSolid.ttf") format("truetype");
+}
+
 html,
 body,
 #root {
@@ -10,6 +16,38 @@ body,
 
 canvas {
   touch-action: none;
+}
+
+.title {
+  position: fixed;
+  top: 0;
+  left: 15px;
+  font-family: PokemonSolid;
+}
+
+.title h1,
+.title h2 {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+}
+
+.title h1::selection,
+.title h2::selection {
+  background: transparent;
+}
+
+.title h1 {
+  top: -50px;
+  font-size: 70px;
+  letter-spacing: 5px;
+}
+
+.title h2 {
+  top: 70px;
+  left: 15px;
+  font-size: 35px;
+  letter-spacing: 3px;
 }
 
 .mode-btn {
@@ -55,6 +93,7 @@ canvas {
   height: 3px;
   transition: all 0.3s;
   transform: translateY(10px);
+  display: block;
 }
 
 .menu ul li svg {
@@ -79,26 +118,25 @@ canvas {
 
 .menu ul li.active::after {
   width: 42px;
-  background: #588b8b;
-  display: block;
+  background: #0c835f;
   border-radius: 10px;
 }
 
 .menu ul li.active svg path {
-  fill: #588b8b;
+  fill: #0c835f;
 }
 
 /*color menu*/
 .color-menu {
   position: absolute;
-  border: 2px solid #588b8b;
+  border: 2px solid #0c835f;
   bottom: 80px;
-  background: rgba(247, 241, 241, 0.77);
+  background: rgba(209, 209, 209, 0.77);
   border-radius: 50px;
   padding: 20px;
   visibility: hidden;
   opacity: 0;
-  transition: all 0.4s ease-in-out;
+  transition: all 0.3s ease-in-out;
 }
 
 .color-menu ul {
@@ -128,7 +166,7 @@ canvas {
 
 .color-menu ul li:last-of-type {
   font-size: 35px;
-  color: #588b8b;
+  color: #0c835f;
 }
 
 /*active class on color menu*/
@@ -142,7 +180,7 @@ canvas {
   height: 70px;
   border-radius: 50px;
   position: absolute;
-  border: 1px solid #588b8b;
+  border: 1px solid #0c835f;
 }
 
 /*toggle color menu visibility*/

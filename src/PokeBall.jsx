@@ -44,11 +44,37 @@ export function PokeBall(props) {
 
   useEffect(() => {
     if (bottomColor === 1) {
-      setBottomColors({ r: 0.871, g: 0.871, b: 0.871, metalness: 0 });
+      setBottomColors({
+        r: 0.871,
+        g: 0.871,
+        b: 0.871,
+        metalness: 0,
+        roughness: 0.2,
+      });
     } else if (bottomColor === 2) {
-      setBottomColors({ r: 0.287, g: 0.159, b: 0.034, metalness: 0.9 });
+      setBottomColors({
+        r: 0.005,
+        g: 0.005,
+        b: 0.005,
+        metalness: 0,
+        roughness: 0.6,
+      });
+    } else if (bottomColor === 3) {
+      setBottomColors({
+        r: 0.287,
+        g: 0.159,
+        b: 0.034,
+        metalness: 0.9,
+        roughness: 0.1,
+      });
     } else {
-      setBottomColors({ r: 0.223, g: 0.223, b: 0.223, metalness: 0 });
+      setBottomColors({
+        r: 0.223,
+        g: 0.223,
+        b: 0.223,
+        metalness: 0,
+        roughness: 0.5,
+      });
     }
   }, [bottomColor]);
 
@@ -98,6 +124,7 @@ export function PokeBall(props) {
         material-color-g={bottomColors.g}
         material-color-b={bottomColors.b}
         material-metalness={bottomColors.metalness}
+        material-roughness={bottomColors.roughness}
         rotation={[Math.PI / 2, 0, 0]}
       />
       <mesh
