@@ -7,6 +7,7 @@ import BottomIcon from "./icons/BottomIcon";
 import EmissionIcon from "./icons/EmissionIcon";
 import ListItem from "./ListItem";
 import ColorList from "./ColorList";
+import { useColorsStore } from "./useColorsStore";
 
 const Overlay = () => {
   //night/day mode state
@@ -22,10 +23,10 @@ const Overlay = () => {
 
   //active element state
   const [active, setActive] = useState(null);
-  const [activeColorTop, setActiveColorTop] = useState(1);
-  const [activeColorInside, setActiveColorInside] = useState(1);
-  const [activeColorBottom, setActiveColorBottom] = useState(1);
-  const [activeColorEmission, setActiveColorEmission] = useState(1);
+  const { activeColorTop, setActiveColorTop } = useColorsStore();
+  const { activeColorInside, setActiveColorInside } = useColorsStore();
+  const { activeColorBottom, setActiveColorBottom } = useColorsStore();
+  const { activeColorEmission, setActiveColorEmission } = useColorsStore();
 
   //elements data
   const [menuData] = useState([
@@ -49,15 +50,15 @@ const Overlay = () => {
 
   const [bottomColorData] = useState([
     { id: 1, color: "#f0f0f0" },
-    { id: 2, color: "#0f0f0f" },
+    { id: 2, color: "#926F34" },
     { id: 3, color: "#828282" },
   ]);
 
   const [emissionColorData] = useState([
-    { id: 1, color: "#00FF19" },
-    { id: 2, color: "#FF0500" },
-    { id: 3, color: "#2900FF" },
-    { id: 4, color: "#F900FF" },
+    { id: 1, color: "#abe393" },
+    { id: 2, color: "#fce694" },
+    { id: 3, color: "#9ee4dd" },
+    { id: 4, color: "#dfe3e1" },
   ]);
 
   //navigate trough the elements
