@@ -50,14 +50,40 @@ canvas {
   letter-spacing: 3px;
 }
 
-.mode-btn {
+.buttons {
   cursor: pointer;
   position: fixed;
-  border: none;
-  background: none;
   top: 15px;
   right: 15px;
+  display: flex;
+}
+
+button {
   font-size: 30px;
+  border: none;
+  background: none;
+}
+
+.click-counter {
+  position: fixed;
+  top: 21px;
+  right: 65px;
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 7px;
+  color: #ffffff;
+  background-color: rgba(8, 30, 69, 0.8);
+  border-radius: 50px;
+  padding: 8px 6px;
+  border: 1px solid #0c835f;
+}
+
+.click-counter div:nth-child(1) {
+  width: 33px;
+}
+
+.click-counter div::selection {
+  background: transparent;
 }
 
 .menu-container {
@@ -187,4 +213,68 @@ canvas {
 .show {
   opacity: 1;
   visibility: visible;
+}
+
+@media screen and (max-width: 500px) {
+  .title {
+    left: 10px;
+  }
+
+  .title h1 {
+    top: 10px;
+    font-size: 50px;
+  }
+
+  .title h2 {
+    top: 70px;
+    font-size: 27px;
+  }
+
+  .color-menu {
+    bottom: 70px;
+    padding: 15px;
+  }
+
+  .color-menu ul {
+    gap: 1.9em;
+  }
+
+  .color-menu ul li.active::after {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media screen and (max-width: 900px) and (orientation: landscape) {
+  .title {
+    left: 10px;
+  }
+
+  .title h1 {
+    top: 10px;
+    font-size: 50px;
+  }
+
+  .title h2 {
+    top: 70px;
+    font-size: 27px;
+  }
+
+  .menu-container {
+    bottom: 20px;
+  }
+
+  .color-menu {
+    bottom: 50px;
+    padding: 15px;
+  }
+
+  .color-menu ul {
+    gap: 1.9em;
+  }
+
+  .color-menu ul li.active::after {
+    width: 60px;
+    height: 60px;
+  }
 }

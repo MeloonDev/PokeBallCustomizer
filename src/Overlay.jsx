@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react";
 import { RiCloseCircleFill } from "react-icons/ri";
 import { BsMoon, BsSun } from "react-icons/bs";
+import { TbHandFingerOff, TbHandFinger } from "react-icons/tb";
 import TopIcon from "./icons/TopIcon";
 import InsideIcon from "./icons/InsideIcon";
 import BottomIcon from "./icons/BottomIcon";
 import EmissionIcon from "./icons/EmissionIcon";
 import ListItem from "./ListItem";
 import ColorList from "./ColorList";
-import { useColorsStore } from "./useColorsStore";
+import { useStore } from "./useStore";
 
 const Overlay = () => {
+  //toggle clicker visibility
+  const { clickerVisible, setClickerVisible } = useStore();
+
   //night/day mode state
   const [dayMode, setDayMode] = useState(false);
 
@@ -23,10 +27,10 @@ const Overlay = () => {
 
   //active element state
   const [active, setActive] = useState(null);
-  const { activeColorTop, setActiveColorTop } = useColorsStore();
-  const { activeColorInside, setActiveColorInside } = useColorsStore();
-  const { activeColorBottom, setActiveColorBottom } = useColorsStore();
-  const { activeColorEmission, setActiveColorEmission } = useColorsStore();
+  const { activeColorTop, setActiveColorTop } = useStore();
+  const { activeColorInside, setActiveColorInside } = useStore();
+  const { activeColorBottom, setActiveColorBottom } = useStore();
+  const { activeColorEmission, setActiveColorEmission } = useStore();
 
   //elements data
   const [menuData] = useState([
@@ -91,15 +95,28 @@ const Overlay = () => {
         <h1>PokeBall</h1>
         <h2>Customizer</h2>
       </div>
-      <button
-        onClick={() => {
-          setDayMode(!dayMode);
-        }}
-        className={dayMode ? "day mode-btn" : "night mode-btn"}
-        style={{ color: dayMode ? "#262626" : "#f2f2f2" }}
-      >
-        {dayMode ? <BsMoon /> : <BsSun />}
-      </button>
+      <div className="buttons">
+        <button
+          className="toggle-clicker"
+          onClick={() => {
+            setClickerVisible(!clickerVisible);
+          }}
+          style={{
+            color: dayMode ? "#262626" : "#f2f2f2",
+          }}
+        >
+          {clickerVisible ? <TbHandFingerOff /> : <TbHandFinger />}
+        </button>
+        <button
+          onClick={() => {
+            setDayMode(!dayMode);
+          }}
+          className={dayMode ? "day mode-btn" : "night mode-btn"}
+          style={{ color: dayMode ? "#262626" : "#f2f2f2" }}
+        >
+          {dayMode ? <BsMoon /> : <BsSun />}
+        </button>
+      </div>
       <div className="menu-container">
         <div className={active === 1 ? "show color-menu" : "color-menu"}>
           <ul>

@@ -2,9 +2,11 @@ import {
   ContactShadows,
   Environment,
   Float,
+  Html,
   PresentationControls,
 } from "@react-three/drei";
 import { Suspense } from "react";
+import ClickCounter from "./ClickCounter";
 import { PokeBall } from "./PokeBall";
 
 function App() {
@@ -30,6 +32,9 @@ function App() {
       >
         <Float speed={3} rotationIntensity={1} floatIntensity={1}>
           <PokeBall rotation={[-0.1, 0, 0.1]} scale={0.8} />
+          <Html scale={0.3} position={[1.1, 0.95, 0.7]} transform occlude>
+            <ClickCounter />
+          </Html>
         </Float>
       </PresentationControls>
       <ContactShadows
