@@ -1,12 +1,15 @@
 import { useGLTF } from "@react-three/drei";
 import { useEffect, useRef, useState } from "react";
-import { useColorsStore } from "./useColorsStore";
+import { useStore } from "./useStore";
 
 export function PokeBall(props) {
+  //count button clicks
+  const { clicks, setClicks } = useStore();
+
   //manipulate top colors
   const [topColors, setTopColors] = useState({ r: 0.855, g: 0.007, b: 0.007 });
 
-  const topColor = useColorsStore((state) => state.activeColorTop);
+  const topColor = useStore((state) => state.activeColorTop);
 
   useEffect(() => {
     if (topColor === 1) {
@@ -23,7 +26,7 @@ export function PokeBall(props) {
   //manipulate inside colors
   const [insideColors, setInsideColors] = useState({ r: 0, g: 0, b: 0 });
 
-  const insideColor = useColorsStore((state) => state.activeColorInside);
+  const insideColor = useStore((state) => state.activeColorInside);
 
   useEffect(() => {
     if (insideColor === 1) {
@@ -40,7 +43,7 @@ export function PokeBall(props) {
     b: 0.871,
   });
 
-  const bottomColor = useColorsStore((state) => state.activeColorBottom);
+  const bottomColor = useStore((state) => state.activeColorBottom);
 
   useEffect(() => {
     if (bottomColor === 1) {
@@ -85,7 +88,7 @@ export function PokeBall(props) {
     b: 0.8,
   });
 
-  const emissionColor = useColorsStore((state) => state.activeColorEmission);
+  const emissionColor = useStore((state) => state.activeColorEmission);
 
   useEffect(() => {
     if (emissionColor === 1) {
@@ -103,6 +106,7 @@ export function PokeBall(props) {
   const [buttonSound] = useState(() => new Audio("./sound/button.mp3"));
   const button = useRef();
   const buttonClickHandler = (e) => {
+    setClicks(clicks + 1);
     button.current.position.set(0, 0, -0.04);
     buttonSound.currentTime = 0;
     buttonSound.play();
@@ -111,10 +115,31 @@ export function PokeBall(props) {
     }, 100);
   };
 
+  //load model
   const { nodes, materials } = useGLTF("./model/PokeBall.glb");
-  console.log(materials);
+
   return (
     <group {...props} dispose={null}>
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Top.geometry}
+        material={materials.TopMaterial}
+        material-color-r={topColors.r}
+        material-color-g={topColors.g}
+        material-color-b={topColors.b}
+        rotation={[Math.PI / 2, 0, 0]}
+      />
+      <mesh
+        castShadow
+        receiveShadow
+        geometry={nodes.Inside.geometry}
+        material={materials.InsideMaterial}
+        material-color-r={insideColors.r}
+        material-color-g={insideColors.g}
+        material-color-b={insideColors.b}
+        rotation={[Math.PI / 2, 0, 0]}
+      />
       <mesh
         castShadow
         receiveShadow
@@ -130,11 +155,11 @@ export function PokeBall(props) {
       <mesh
         castShadow
         receiveShadow
-        geometry={nodes.Inside.geometry}
-        material={materials.InsideMaterial}
-        material-color-r={insideColors.r}
-        material-color-g={insideColors.g}
-        material-color-b={insideColors.b}
+        geometry={nodes.Emission.geometry}
+        material={materials.EmissionMaterial}
+        material-color-r={emissionColors.r}
+        material-color-g={emissionColors.g}
+        material-color-b={emissionColors.b}
         rotation={[Math.PI / 2, 0, 0]}
       />
       <mesh
@@ -144,26 +169,6 @@ export function PokeBall(props) {
         receiveShadow
         geometry={nodes.Button.geometry}
         material={materials.Metal}
-        rotation={[Math.PI / 2, 0, 0]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Emission.geometry}
-        material={materials.EmissionMaterial}
-        material-color-r={emissionColors.r}
-        material-color-g={emissionColors.g}
-        material-color-b={emissionColors.b}
-        rotation={[Math.PI / 2, 0, 0]}
-      />
-      <mesh
-        castShadow
-        receiveShadow
-        geometry={nodes.Top.geometry}
-        material={materials.TopMaterial}
-        material-color-r={topColors.r}
-        material-color-g={topColors.g}
-        material-color-b={topColors.b}
         rotation={[Math.PI / 2, 0, 0]}
       />
     </group>
