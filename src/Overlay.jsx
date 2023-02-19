@@ -191,6 +191,14 @@ const Overlay = () => {
           </ul>
         </div>
       </div>
+      <p
+        className="copyrights"
+        style={{
+          color: dayMode ? "#262626" : "#f2f2f2",
+        }}
+      >
+        &copy; 2023 Created by MeloonDev
+      </p>
     </>
   );
 };

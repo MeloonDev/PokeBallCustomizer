@@ -214,6 +214,16 @@ button {
   visibility: visible;
 }
 
+.copyrights {
+  position: fixed;
+  bottom: 1px;
+  right: 3px;
+  margin: 0;
+  opacity: 0.5;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 7px;
+}
+
 @media screen and (max-width: 500px) {
   .title {
     left: 10px;
