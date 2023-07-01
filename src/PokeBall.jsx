@@ -116,7 +116,7 @@ export function PokeBall(props) {
   };
 
   //load model
-  const { nodes, materials } = useGLTF("./model/PokeBallOptimized.glb");
+  const { nodes, materials } = useGLTF("./model/PokeBallOp.glb");
 
   return (
     <group {...props} dispose={null}>
@@ -175,4 +175,4 @@ export function PokeBall(props) {
   );
 }
 
-useGLTF.preload("./model/PokeBallOptimized.glb");
+useGLTF.preload("./model/PokeBallOp.glb");

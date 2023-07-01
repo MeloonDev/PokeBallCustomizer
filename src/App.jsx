@@ -12,7 +12,16 @@ import { PokeBall } from "./PokeBall";
 function App() {
   return (
     <Suspense>
-      <Environment preset="city" />
+      <Environment
+        files={[
+          "./Environment/px.png",
+          "./Environment/nx.png",
+          "./Environment/py.png",
+          "./Environment/ny.png",
+          "./Environment/pz.png",
+          "./Environment/nz.png",
+        ]}
+      />
       <ambientLight intensity={0.5} />
       <spotLight
         position={[10, 10, 10]}
